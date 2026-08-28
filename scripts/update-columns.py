@@ -1,7 +1,22 @@
 import pandas as pd
 from pathlib import Path
 
-dataset_path = Path("/Users/riosmelisa/Desktop/dataset")
+
+dataset_path = Path("dataset")
+output_path = dataset_path / "outputs"
+
+archivos_precios = list(dataset_path.glob("precios_*.csv"))
+
+df_precios = pd.concat(
+    [pd.read_csv(archivo, encoding="utf-8") for archivo in archivos_precios],
+    ignore_index=True
+)
+
+df_precios.to_csv(
+    output_path / "precios.csv",
+    index=False,
+    encoding="utf-8"
+)
 
 column_mappings = {
     "productos.csv": {
