@@ -16,7 +16,7 @@
 --      (el servidor necesita local_infile=ON, que es lo normal
 --      en una instalación default de MySQL)
 --
--- Es idempotente: se puede volver a correr las veces que haga
+--  se puede volver a correr las veces que haga
 -- falta, vacía las tablas antes de cargar de nuevo.
 
 
