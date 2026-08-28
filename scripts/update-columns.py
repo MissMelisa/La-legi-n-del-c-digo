@@ -5,19 +5,6 @@ from pathlib import Path
 dataset_path = Path("dataset")
 output_path = dataset_path / "outputs"
 
-archivos_precios = list(dataset_path.glob("precios_*.csv"))
-
-df_precios = pd.concat(
-    [pd.read_csv(archivo, encoding="utf-8") for archivo in archivos_precios],
-    ignore_index=True
-)
-
-df_precios.to_csv(
-    output_path / "precios.csv",
-    index=False,
-    encoding="utf-8"
-)
-
 column_mappings = {
     "productos.csv": {
         "id": "id",
@@ -28,12 +15,12 @@ column_mappings = {
         "categoria2": "categoria_2",
         "categoria3": "categoria_3",
     },
-    "precios.csv": {
+    "outputs/precios.csv": {
         "precio": "precio",
         "producto_id": "producto_id",
         "sucursal_id": "sucursal_id",
     },
-    "sucursales_cordoba.csv": {
+    "outputs/sucursales_cordoba.csv": {
         "id": "id",
         "comercioid": "comercio_id",
         "banderaid": "bandera_id",
