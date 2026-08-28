@@ -1,0 +1,164 @@
+id,comercioid,banderaid,banderadescripcion,comerciorazonsocial,provincia,localidad,direccion,lat,lng,sucursalnombre,sucursaltipo
+1-1-7,1,1,Super MAMI,Dinosaurio S.A.,AR-X,SALSIPUEDES,E53 1011 None,-31.126667,-64.29525,Super Mami 4,Hipermercado
+10-1-24,10,1,Hipermercado Carrefour,INC S.A.,AR-X,Jardin Espinoza,Av. O'Higgins 3765,-31.455534000000004,-64.166095,Córdoba Jardín,Hipermercado
+10-1-50,10,1,Hipermercado Carrefour,INC S.A.,AR-X,Quintas de Arguello,Recta Martinolli 7850,-31.346646000000003,-64.269297,Córdoba Recta Martinolli,Hipermercado
+10-1-54,10,1,Hipermercado Carrefour,INC S.A.,AR-X,Villa Allende Lomas,Av. Río De Janeiro 1787,-31.300019,-64.276462,Córdoba Villa Allende,Hipermercado
+10-1-9,10,1,Hipermercado Carrefour,INC S.A.,AR-X,Villa Urquiza,Av. Colón 4880,-31.393915000000003,-64.242835,Córdoba Colon,Hipermercado
+10-2-119,10,2,Market,INC S.A.,AR-X,Río Cuarto,Sobremonte 902,-33.125271000000005,-64.349014,Río Cuarto,Supermercado
+10-2-295,10,2,Market,INC S.A.,AR-X,Alto Verde,Bvard. Granaderos 2906,-31.374529,-64.21385500000001,Córdoba Granaderos,Supermercado
+10-3-606,10,3,Express,INC S.A.,AR-X,Córdoba,Ovispo Trejo 1166,-31.42895900000001,-64.19116,Ovispo Trejo 1166,Autoservicio
+10-3-607,10,3,Express,INC S.A.,AR-X,Córdoba,Chacabuco 727,-31.426127,-64.183581,Chacabuco 727,Autoservicio
+10-3-610,10,3,Express,INC S.A.,AR-X,Córdoba,Av. Pueyrredón 298,-31.425978000000004,-64.192761,Pueyrredón 298,Autoservicio
+10-3-641,10,3,Express,INC S.A.,AR-X,Córdoba,Alvear 126,-31.415382,-64.180514,Alvear 126,Autoservicio
+10-3-642,10,3,Express,INC S.A.,AR-X,Córdoba,Gral. Paz 240,-31.412485,-64.185278,General Paz 240,Autoservicio
+10-3-644,10,3,Express,INC S.A.,AR-X,Córdoba,25 De Mayo 979,-31.415769,-64.169505,25 de Mayo 979,Autoservicio
+10-3-648,10,3,Express,INC S.A.,AR-X,Córdoba,Belgrano 54,-31.415363,-64.18853,Belgrano 54,Autoservicio
+10-3-650,10,3,Express,INC S.A.,AR-X,Córdoba,San Martín 26,-31.42053,-64.499099,San Martín 26,Autoservicio
+11-2-1056,11,2,Changomas,Wal Mart Argentina S.R.L.,AR-X,VILLA NUEVA,Av Carranza E/ Lima Y Costanera 980,-32.423605,-63.24397800000001,Villa Nueva,Hipermercado
+11-2-1060,11,2,Changomas,Wal Mart Argentina S.R.L.,AR-X,BARRIO MATIENZO *,Av Fuerza Aerea Argentina 4372,-31.432014,-64.24399100000001,CDBA-Fuerza Aerea,Supermercado
+11-2-1097,11,2,Changomas,Wal Mart Argentina S.R.L.,AR-X,BARRIO AERONAUTICO *,Avenida Donato Alvarez 8600,-31.32402,-64.269118,Cordoba Donato Alvarez,Hipermercado
+11-5-1002,11,5,Walmart SuperCenter,Wal Mart Argentina S.R.L.,AR-X,RIO CUARTO,Juan B Justo 2052,-33.131159999999994,-64.3824,Rio IV,Hipermercado
+11-5-1010,11,5,Walmart SuperCenter,Wal Mart Argentina S.R.L.,AR-X,CIUDAD DE CORDOBA NORTE,Av Circunvalacion Este 2557,-31.466986,-64.162452,Córdoba Sur,Hipermercado
+11-5-3605,11,5,Walmart SuperCenter,Wal Mart Argentina S.R.L.,AR-X,CIUDAD DE CORDOBA NORTE,Av Colon 6051,-31.395535,-64.259731,Córdoba OE,Hipermercado
+11-5-3606,11,5,Walmart SuperCenter,Wal Mart Argentina S.R.L.,AR-X,CIUDAD DE CORDOBA NORTE,Mauricio Yadarola 1699,-31.391634000000003,-64.15848299999999,Córdoba Este,Hipermercado
+14-1-1,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Alta Gracia,Av.Belgrano 466,-31.658308,-64.42845,Casa Central,Hipermercado
+14-1-10,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Villa Carlos Paz,Cassaffoutsh 59,-31.415957,-64.502649,Sucursal 10 (cpaz),Supermercado
+14-1-11,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Villa General Belgrano,Ojo De Agua 356,-31.979941,-64.553286,Sucursal 11 (vgb),Supermercado
+14-1-2,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Alta Gracia,Av. Libertador 790,-31.65864,-64.42357,Sucursal 02,Supermercado
+14-1-3,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Alta Gracia,Agustin Aguirre 402,-31.654963,-64.430021,Sucursal 03,Supermercado
+14-1-4,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Alta Gracia,Lucas V. Cordoba 965,-31.64848,-64.433943,Sucursal 04,Supermercado
+14-1-5,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Alta Gracia,Av. Libertador 1740,-31.658608,-64.413147,Sucursal 05,Supermercado
+14-1-6,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Alta Gracia,Consejal Alonso 770,-31.664987,-64.427644,Sucursal 06,Autoservicio
+14-1-7,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Alta Gracia,Av. Sarmiento 618,-31.654088,-64.44225899999999,Sucursal 07,Supermercado
+14-1-8,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Santa Rosa De Calamuchita,Espa±A 95,-32.065183000000005,-64.539902,Sucursal 08 (sros),Supermercado
+14-1-9,14,1,Supermercados Becerra,Miguel Becerra S.A.,AR-X,Villa Carlos Paz,Av. Carcano 589,-31.431672,-64.498234,Sucursal 09 (cpaz),Supermercado
+15-1-1048,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Bell Ville,Cl Cordoba 602,-32.629875,-62.694435,1048 - Bell Ville,Supermercado
+15-1-1049,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Marcos Juarez,Cl Belgrano 951,-32.6955357,-62.104534,1049 - Marcos Juarez,Supermercado
+15-1-1057,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Rio Tercero,Cl Uruguay 254,-32.175576,-64.10754200000001,1057 - Rio Tercero,Supermercado
+15-1-1060,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Villa Maria,Leandro N. Alem 429,-32.4078411,-63.2485416,1060 - Villa Maria,Supermercado
+15-1-1065,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Villa Maria,Periodistas Argentinos 626,-32.413771999999994,-63.2327919,1065 - Villa Maria,Supermercado
+15-1-1071,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Arroyito,Av Arturo Illia 796,-31.414566,-63.04657099999999,1071 - Arroyito,Supermercado
+15-1-1509,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,San Francisco Dpto S Just,Bv Saenz Peã±A 770,-31.4373822,-62.0754172,1509 - San Francisco Dpto S Just,Autoservicio
+15-1-1510,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Almafuerte,Pedro C. Molina 244,-32.196961,-64.252269,1510 - Almafuerte,Supermercado
+15-1-1511,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Villa Del Rosario,Cl H. Irigoyen 907,-31.553545,-63.53476,1511 - Villa Del Rosario,Supermercado
+15-1-1513,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Hernando,Bv Rivadavia 300,-32.426196999999995,-63.738309,1513 - Hernando,Autoservicio
+15-1-1514,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,La Carlota,Velez Sarsfield 865,-33.417932,-63.296037,1514 - La Carlota,Autoservicio
+15-1-1515,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Oncativo,Cl Belgrano 941,-31.9151891,-63.6792919,1515 - Oncativo,Supermercado
+15-1-1517,15,1,Supermercados DIA,DIA Argentina S.A,AR-X,Leones,Gral Roca 741,-32.657917,-62.299299,1517 - Leones,Autoservicio
+16-1-102,16,1,Hipermercado Libertad,Libertad S.A,AR-X,Capital,Fray Luis Beltrán Y Manuel Cardeñosa None,-31.36418,-64.216945,Hipermercado Poeta Lugones,Hipermercado
+16-1-202,16,1,Hipermercado Libertad,Libertad S.A,AR-X,Capital,Libertad 1100,-31.408596000000006,-64.170035,Hipermercado Jacinto Rios,Hipermercado
+16-1-2502,16,1,Hipermercado Libertad,Libertad S.A,AR-X,Capital,Av.Ricardo Rojas Y Manuel De Falla None,-31.335048,-64.29016800000001,Hipermercado Rivera Indarte,Hipermercado
+16-1-2802,16,1,Hipermercado Libertad,Libertad S.A,AR-X,Villa Maria,Ruta 158 Km 155 None,-32.387278,-63.242153,Hipermercado Villa María,Hipermercado
+16-1-602,16,1,Hipermercado Libertad,Libertad S.A,AR-X,Capital,Avda. Amadeo Sabattini 3250,-31.434051,-64.142987,Hipermercado Ruta 9,Hipermercado
+16-2-4104,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Santiago Derqui 33,-31.42571,-64.18749100000001,Mini Libertad Nueva Cordoba,Autoservicio
+16-2-4204,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Sagrada Familia 1305,-31.38671,-64.22750699999999,Mini Libertad Sagrada Familia,Autoservicio
+16-2-4604,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Av. Emilio Caraffa 2683,-31.387203000000003,-64.21509499999999,Mini Libertad Caraffa,Autoservicio
+16-2-4804,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Rodeau 581,-31.424348,-64.178865,Mini Libertad Rondeau ,Autoservicio
+16-2-5204,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Tucumán 138,-31.41330300000001,-64.187476,Mini Libertad Tucuman,Autoservicio
+16-2-5404,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Paraná 475,-31.423638,-64.17975,Mini Libertad Parana,Autoservicio
+16-2-5504,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,José Roque Funes 1145,-31.380531,-64.24515,Petit Barranquitas Mall,Autoservicio
+16-2-5604,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Av República De China 1045,-31.377987,-64.277458,Petit Valle Mall,Autoservicio
+16-2-5704,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Joaquin Camaño Y Bazan 4494,-31.362231,-64.218739,Petit HiperConstruccion,Autoservicio
+16-2-5904,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Octavio Pinto 2665,-31.389456,-64.215506,Mini Libertad Octavio Pinto,Autoservicio
+16-2-6004,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Ambrosio Olmos 929,-31.4318414,-64.1916118,Mini Ambrosio Olmos,Autoservicio
+17-1-70,17,1,Atomo,Millan S.A.,AR-X,Sampacho,Ruta Nacional 8 Entre 9 De Julio Y Lamadrid S.N None,-33.38916,-64.718162,Sampacho,Supermercado
+2-1-119,2,1,La Anonima,S.A. Importadora y Exportadora de la Patagonia,AR-X,Laboulaye,España 88,-34.12495,-63.38761,LABOULAYE,Supermercado
+2-1-221,2,1,La Anonima,S.A. Importadora y Exportadora de la Patagonia,AR-X,Morteros,Bv 9 De Julio 2339,-30.72523,-62.00968,MORTEROS,Supermercado
+2-1-264,2,1,La Anonima,S.A. Importadora y Exportadora de la Patagonia,AR-X,Marcos Juares,Bv. Lardizabal 250,-32.7,-62.09501,MARCOS JUAREZ,Supermercado
+2-1-351,2,1,La Anonima,S.A. Importadora y Exportadora de la Patagonia,AR-X,Arroyito,Espacio Cultural Lafaye 640,-31.42026,-63.06375,ARROYITO,Supermercado
+23-1-6253,23,1,Axion Energy,Pan American Energy LLC Argentina,AR-X,Cordoba,Monseñor Pablo Cabrera 1807,-31.3895,-64.2053,Caraffa,Autoservicio
+23-1-6255,23,1,Axion Energy,Pan American Energy LLC Argentina,AR-X,Cordoba,Av. A Sabattini 4720,-31.439,-64.1302,El Arco,Autoservicio
+23-1-6269,23,1,Axion Energy,Pan American Energy LLC Argentina,AR-X,Villa Allende,Av. Goycochea 1235,-31.3003,-64.2899,Villa Allende,Autoservicio
+23-1-6284,23,1,Axion Energy,Pan American Energy LLC Argentina,AR-X,Cordoba,Alvearn 831,-31.4076,-64.1786,Guzman,Autoservicio
+23-1-6286,23,1,Axion Energy,Pan American Energy LLC Argentina,AR-X,Cordoba,Bulnes 1108,-31.3998,-64.1757,Bulnes,Autoservicio
+7-1-12,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,VILLA DOLORES,Cenobio Soto 99,-31.945415,-65.192428,Cordiez 12,Supermercado
+7-1-13,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,PILAR,Tomas Garzon 234,-31.681017,-63.88091,Cordiez 13,Supermercado
+7-1-14,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,VILLA DOLORES,Belgrano 199,-31.944647,-65.188052,Cordiez 14,Supermercado
+7-1-2,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,RIO SEGUNDO,Sarmiento 1096,-31.651386,-63.910924,Cordiez 2,Supermercado
+7-1-20,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,VILLA ALLENDE,Av. Goycoechea Esq 9 De Julio None,-31.295597,-64.294248,Cordiez 20,Hipermercado
+7-1-22,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Avenida Sabattini Esquina Villegas None,-31.462198,-64.105638,Cordiez 22,Supermercado
+7-1-26,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Av. Colon 3265,-31.401621,-64.223639,Cordiez 26,Supermercado
+7-1-29,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,DEAN FUNES,Rivadavia 160,-30.424783,-64.35127800000001,Cordiez 29,Supermercado
+7-1-3,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,LAS VARILLAS,Diego Montoya 335,-31.872108,-62.725261,Cordiez 3,Supermercado
+7-1-31,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Agustin Garzon 4916,-31.427771000000003,-64.123136,Cordiez 31,Supermercado
+7-1-32,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,STA.ROSA CALAMUCHITA,Libertad 441,-32.066495,-64.540024,Cordiez 32,Supermercado
+7-1-33,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Fragueiro 2415,-31.387312,-64.184167,Cordiez 33,Supermercado
+7-1-34,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Av. Richieri 4200,-31.459773,-64.168204,Cordiez 34,Supermercado
+7-1-39,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,LA FALDA,Rio Negro 249,-31.089486,-64.486559,Cordiez 39,Supermercado
+7-1-40,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Av. Velez Sarsfield 334,-31.419003000000004,-64.188666,Cordiez 40,Supermercado
+7-1-41,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,MORTEROS,9 De Julio 889 Esq San Martin 889,-30.711216,-62.00629,Cordiez 41,Supermercado
+7-1-42,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,RIO CEBALLOS,San Martin 4480,-31.170089,-64.316653,Cordiez 42,Supermercado
+7-1-43,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CARLOS PAZ,Av. San Martin 1906,-31.406365,-64.47640799999999,Cordiez 43,Supermercado
+7-1-44,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Donato Alvarez 8400,-31.325218,-64.267581,Cordiez 44,Supermercado
+7-1-45,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CURA BROCHERO,Ruta 15 Esq 25 De Mayo None,-31.70631,-65.020359,Cordiez 45,Supermercado
+7-1-46,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,MINA CLAVERO,Av. San Martin 611,-31.718774,-65.005083,Cordiez 46,Supermercado
+7-1-47,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CAPILLA DEL MONTE,Hipolito Yrigoyen 262,-30.857497,-64.525162,Cordiez 47,Supermercado
+7-1-48,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,UNQUILLO,Av. San Martin 1669,-31.236851,-64.313564,Cordiez 48,Supermercado
+7-1-5,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,VILLA DOLORES,Belgrano 1228,-31.948391,-65.174243,Cordiez 5,Supermercado
+7-1-50,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,LA CUMBRE,25 De Mayo Esq. Lopez Y Planes None,-30.982788,-64.491956,Cordiez 50,Supermercado
+7-1-53,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,RIO SEGUNDO,Hipólito Irigoyen Esq. Córdoba 593,-31.65476,-63.912218,Cordiez 53,Supermercado
+7-1-7,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Av. Sabattini 4417,-31.436163,-64.129571,Cordiez 7,Supermercado
+7-1-8,7,1,Supermercados Cordiez,Cyre S.A.,AR-X,CORDOBA,Av. Fuerza Aerea 1902,-31.430344,-64.21490899999999,Cordiez 8,Supermercado
+7-2-801,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,CORDOBA,Av. Vucetich 6714,-31.465265,-64.093979,Mercamax 801,Supermercado
+7-2-802,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,VILLA DEL ROSARIO,San Juan 760,-31.557592,-63.536742,Mercamax 802,Supermercado
+7-2-803,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,CORDOBA,Agustin Garzon Esq. Centro America None,-31.424414,-64.15938299999999,Mercamax 803,Supermercado
+7-2-804,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,CORDOBA,Av. De Mayo 1225,-31.475606,-64.22125799999999,Mercamax 804,Supermercado
+7-2-805,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,JESUS MARIA,Av. Dr. Miguel Juárez 592,-30.980934,-64.10463399999999,Mercamax 805,Supermercado
+7-2-806,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,CORDOBA,Ruta 9 Km 9 None,-31.312421,-64.17662800000001,Mercamax 806,Supermercado
+7-2-807,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,CORDOBA,Coornelio Saavedra 2990,-31.378481,-64.196087,Mercamax 807,Supermercado
+7-2-808,7,2,Abastecimiento Mercamax,Cyre S.A.,AR-X,CORDOBA,Aaron Castellanos 1955,-31.432482,-64.23448,Mercamax 808,Supermercado
+8-1-1,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Av. 11 De Septiembre 2765,-31.44329500000001,-64.148264,Sucursal 1,Supermercado
+8-1-2,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Av. Arturo Capdevila 1831,-31.379569,-64.14765200000001,Sucursal 2,Hipermercado
+8-1-3,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Carlos Gimenez 35,-31.365896000000006,-64.16644000000001,Sucursal 3,Supermercado
+8-1-4,8,1,Mariano Max,Mariano S.A.,AR-X,jesus maria,Italia 363,-30.978745,-64.092456,Sucursal 4,Supermercado
+8-1-5,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Av. Santa Ana 3551,-31.412738,-64.23076800000001,Sucursal 5,Hipermercado
+8-1-6,8,1,Mariano Max,Mariano S.A.,AR-X,CRUZ DEL EJE,Av. Mitre  Esquina José Hernández 0,-30.724778000000004,-64.80168,Sucursal 6,Hipermercado
+8-1-7,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Av. Vélez Sársfield 4051,-31.457372,-64.200399,Sucursal 7,Hipermercado
+8-1-8,8,1,Mariano Max,Mariano S.A.,AR-X,Valle Hermoso,Ruta Nac Nº 38 Esquina Calle Las Sierras 0,-31.108277,-64.484196,Sucursal 8,Hipermercado
+8-1-9,8,1,Mariano Max,Mariano S.A.,AR-X,jesus maria,Ruta Nac. Nº 9 Esquina Calle Corrientes 0,-30.977255,-64.084407,Sucursal 9,Hipermercado
+9-1-113,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,RIO CUARTO,Granderos 200,-33.116,-64.3509,Río Cuarto.,Supermercado
+9-1-114,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Juan B. Justo 3900,-31.3796,-64.1756,Juan B. Justo.,Supermercado
+9-1-195,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,RIO CUARTO,Avenida Alvear Presidente Marcelo Torcuato De 350,-33.1105,-64.3401,Vea 29 - M.T. de Alvear Cba..,Supermercado
+9-1-232,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,VILLA MARIA,Boulevard Velez Sarsfield 411,-32.4086,-63.2565,Villa María II.,Supermercado
+9-1-32,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Buchardo 1654,-31.4034,-64.1655,Buchardo.,Supermercado
+9-1-432,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,San Jeronimo 2830,-31.4235,-64.1472,San Vicente.,Supermercado
+9-1-434,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Olmos Emilio F 78,-31.4279,-64.1833,Olmos I.,Supermercado
+9-1-437,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Fuerza Aerea Argentina 2080,-31.4303,-64.219,Ruta 20.,Supermercado
+9-1-440,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Boulevard Chacabuco 199,-31.4225,-64.1823,Chacabuco.,Supermercado
+9-1-453,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Sabattini Dr Amadeo 2180,-31.4333,-64.1568,Ruta 9.,Supermercado
+9-1-455,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Colon Esquina P. Zanni 0,-31.4054,-64.2119,Zanni.,Supermercado
+9-1-464,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,SAN FRANCISCO,Avenida 25 De Mayo 2127,-31.4288,-62.0894,San Francisco.,Supermercado
+9-1-466,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Armada Argentina 334,-31.4536,-64.2062,Armada Argentina.,Supermercado
+9-1-472,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Ciudad De Valparaiso 2048,-31.445,-64.1868,Ipona.,Supermercado
+9-1-473,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida 24 De Septiembre 1330,-31.4137,-64.1656,24 de Septiembre.,Supermercado
+9-1-475,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Nuñez Rafael 5557,-31.3527,-64.2462,Arguello.,Supermercado
+9-1-476,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Colon 461,-31.4116,-64.1893,Colon II.,Supermercado
+9-1-478,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,BELL VILLE,Boulevard Colon 850,-32.619,-62.6938,Bellville.,Supermercado
+9-1-479,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,RIO CUARTO,Avenida Sabattini Dr Amadeo 2136,-33.1383,-64.3538,Rio Cuarto.,Supermercado
+9-1-485,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Moyano Saul 200,-31.3451,-64.3388,La Calera..,Supermercado
+9-1-503,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,MARCOS JUAREZ,Boulevard Lardizabal Ignacio Maria 900,-32.6981,-62.1046,Marcos Juarez.,Supermercado
+9-1-690,9,1,Vea,Jumbo Retail Argentina S.A.,AR-X,RIO TERCERO,Avenida Acuña Modesto 50,-32.174,-64.1094,Rio Tercero II.,Supermercado
+9-2-233,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,VILLA CARLOS PAZ,San Martin 311,-31.4188,-64.4951,Carlos Paz.,Supermercado
+9-2-28,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Friuli 1845,-31.4478,-64.199,Vélez Sarsfield.,Supermercado
+9-2-29,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Nuñez Rafaal 4630,-31.363000000000003,-64.2367,Cerro las Rosas.,Supermercado
+9-2-33,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,J. L. Cabrera 493,-31.3981,-64.1825,Alta Córdoba.,Supermercado
+9-2-435,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Ituzaingo 701,-31.4252,-64.1848,Los 33.,Supermercado
+9-2-436,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Nuñez Rafael 3657,-31.3806,-64.2229,Cerro II.,Supermercado
+9-2-439,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Colon 683,-31.4108,-64.1927,Colón.,Supermercado
+9-2-441,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,J.M. Estada 66,-31.4277,-64.188,Estrada.,Supermercado
+9-2-444,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Velez Sarsfield Dr Dalmacio 132,-31.4168,-64.1874,Vélez I.,Supermercado
+9-2-448,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,VILLA CARLOS PAZ,Avenida Carcano Dr Ramon Jose 925,-31.4367,-64.5007,Carcano.,Supermercado
+9-2-449,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,VILLA CARLOS PAZ,San Martin 1173,-31.413,-64.4852,Acceso.,Supermercado
+9-2-450,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,COSQUIN,Avenida San Martin Gral Jose De 1127,-31.2445,-64.4659,Cosquín.,Supermercado
+9-2-451,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Duarte Quiros Ignacio 1450,-31.4126,-64.1616,Nuevo Centro.,Supermercado
+9-2-452,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,LA FALDA,Avenida Eden 370,-31.093000000000004,-64.483,La Falda.,Supermercado
+9-2-456,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,JESUS MARIA,Olmos Ing 33,-30.9804,-64.096,Jesús María.,Supermercado
+9-2-460,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Ricchieri 3296,-31.4507,-64.1767,Ricchieri.,Supermercado
+9-2-468,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Recta Martinolli 7120,-31.366999999999997,-64.2194,Recta Martinolli.,Supermercado
+9-2-583,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,VILLA ALLENDE,Goycoechea 1327,-31.3015,-64.2856,SM 583 - Villa Allende.,Supermercado
+9-2-60,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Goyechea 2851,-31.3802,-64.2147,Córdoba Shopping.,Supermercado
+9-2-709,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CORDOBA,Avenida Recta Martinoli 8469,-31.3468,-64.2805,Recta Martinolli ll,Supermercado
+9-2-725,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,ALTA GRACIA,Raul Alfonsin 650,-31.6512,-64.4269,Alta Gracia.,Supermercado
+9-2-842,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,CRUZ DEL EJE,"Rivadavia, Esquina Alvear 293",-30.7249,-64.8005,Cruz del Eje.,Supermercado
+9-2-843,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,RIO CEBALLOS,Avenida San Martin 5259,-31.1833,-64.3333,Rio Ceballos.,Supermercado
+9-2-954,9,2,Disco,Jumbo Retail Argentina S.A.,AR-X,ALTA GRACIA,Ruta Provincial 5 E/ Reconquista Y Publica 0,-31.6559,-64.4099,Alta Gracia II,Supermercado
