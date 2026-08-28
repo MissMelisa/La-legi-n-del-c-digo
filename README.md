@@ -41,37 +41,17 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 
 ## Cargar los datos a MySQL
 
-La mayoría de los productos del dataset original no traen `categoria_1/2/3` cargada. `scripts/populate-categories.py` completa lo que puede con un clasificador por palabras clave (`scripts/categorizador.py`) que usa la taxonomía real de [SEPA / Precios Claros](https://www.preciosclaros.gob.ar/#!/productos-informados) — nombre y marca del producto, nada más. Es un heurístico: no viene del dataset original, así que puede tener errores u omisiones, y se puede seguir ajustando agregando palabras clave a `categorizador.py`. Genera dos archivos en `dataset/outputs/`:
-
-- `productos_categorizados.csv`: todos los productos (72038), con `categoria_1/2/3` vacía en los que no se pudo clasificar. Es el que se usa para cargar la tabla `productos` — hacen falta todos, porque si faltara alguno sus precios no podrían insertarse (foreign key).
-- `productos_limpios.csv`: solo los que quedaron con alguna categoría, como catálogo "prolijo" para mirar/analizar. Tiene una columna extra `categoria_origen` (`original` / `inferida`) para distinguir qué categorías vienen del dataset y cuáles fueron inferidas.
-
-Hay dos formas de cargar la base, con el mismo resultado:
-
-**Opción A — con Python (`scripts/load-to-mysql.py`)**
-
 1. Copiá `.env.example` a `.env` y completá los datos de conexión a tu MySQL local.
 2. Instalá las dependencias: `pip install -r requirements.txt`
-3. Corré, en orden:
-   ```
-   python scripts/clean-up.py
-   python scripts/populate-categories.py
-   python scripts/load-to-mysql.py
-   ```
+3. Corré `python scripts/load-to-mysql.py`
 
-El script crea la base de datos y las tablas (`sql/00_crear_base_datos.sql`), vacía las tablas existentes y carga `productos_categorizados.csv`, `sucursales_cordoba.csv` y `precios_cordoba.csv` desde `dataset/outputs/`. Filas de precios que no tengan un producto o sucursal correspondiente se descartan y se informan por consola.
+El script crea la base de datos y las tablas (`sql/00_crear_base_datos.sql`), vacía las tablas existentes y carga `dataset/productos.csv` y los CSV de `dataset/outputs/` (`sucursales_cordoba.csv`, `precios_cordoba.csv`). Filas de precios que no tengan un producto o sucursal correspondiente se descartan y se informan por consola.
 
-**Opción B — un solo script SQL (`sql/fullscript.sql`)**
+La mayoría de los productos del dataset original no traen `categoria_1/2/3` cargada. Antes de insertarlos, el loader completa las categorías faltantes con un clasificador por palabras clave (`scripts/categorizador.py`) que usa la taxonomía real de [SEPA / Precios Claros](https://www.preciosclaros.gob.ar/#!/productos-informados). Es un heurístico basado en el nombre y la marca del producto, no viene del dataset original, así que puede tener errores u omisiones — se puede seguir ajustando agregando palabras clave a `categorizador.py`.
 
-Después de generar los mismos CSV (pasos 1 y 2 de arriba), corré desde la raíz del proyecto:
+`scripts/populate-categories.py` corre el mismo clasificador de forma independiente y guarda el resultado (solo los productos que quedaron con alguna categoría) en `dataset/outputs/productos_limpios.csv`, con una columna extra `categoria_origen` (`original` / `inferida`) para poder distinguir qué categorías vienen del dataset y cuáles fueron inferidas.
 
-```
-mysql --local-infile=1 -u root < sql/fullscript.sql
-```
-
-Hace lo mismo que la Opción A pero todo en SQL (`LOAD DATA LOCAL INFILE`), sin pasar por Python, y también agrega las columnas calculadas `diferencia_precios` y `variacion_porcentual` a `productos`.
-
-Con la base ya cargada (por cualquiera de las dos opciones), podés correr cualquiera de los scripts de `sql/` (por ejemplo `mysql -u root datos_comercios < sql/01_promedio_por_comercio.sql`).
+Con la base ya cargada, podés correr cualquiera de los scripts de `sql/` (por ejemplo `mysql -u root datos_comercios < sql/01_promedio_por_comercio.sql`).
 
 ## Documentación
 

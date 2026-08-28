@@ -2,10 +2,6 @@
 Carga los CSV de dataset/outputs/ a MySQL para poder correr
 los scripts de sql/.
 
-Antes de correr esto hay que tener generado
-dataset/outputs/productos_categorizados.csv, o sea correr primero:
-    python scripts/populate-categories.py
-
 Uso:
     python scripts/load-to-mysql.py
     python scripts/load-to-mysql.py --skip-schema
@@ -28,6 +24,9 @@ from pathlib import Path
 
 import pandas as pd
 from sqlalchemy import create_engine, text
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from categorizador import clasificar
 
 try:
     from dotenv import load_dotenv
@@ -141,25 +140,65 @@ def leer_csv(path, columnas_esperadas):
 
 
 def cargar_productos():
-    # Usamos productos_categorizados.csv (con TODOS los productos, no
-    # el productos_limpios.csv filtrado) porque necesitamos que estén
-    # todos: si faltara alguno, los precios de ese producto no iban
-    # a poder insertarse (foreign key). Este archivo lo genera
-    # scripts/populate-categories.py, que le completa la
-    # categoria_1/2/3 a los que vienen sin clasificar.
+    # Cargamos el productos.csv completo, no el productos_limpios.csv
+    # filtrado, porque si no un montón de producto_id de
+    # precios_cordoba.csv no iban a encontrar su producto (foreign
+    # key) y se caían esos precios: productos_limpios.csv descarta
+    # justamente los productos que no se pudieron categorizar.
     columnas = [
         "id", "marca", "nombre", "presentacion",
         "categoria_1", "categoria_2", "categoria_3",
     ]
 
-    archivo = OUTPUT_DIR / "productos_categorizados.csv"
-    if not archivo.exists():
-        raise FileNotFoundError(
-            f"No se encontró {archivo}. "
-            "Corré primero: python scripts/populate-categories.py"
+    df = pd.read_csv(
+        DATASET_DIR / "productos.csv",
+        encoding="utf-8",
+        dtype={col: str for col in ID_COLUMNS},
+        low_memory=False,
+    )
+    df.columns = df.columns.str.strip().str.lower()
+    df = df.rename(columns={
+        "categoria1": "categoria_1",
+        "categoria2": "categoria_2",
+        "categoria3": "categoria_3",
+    })
+
+    faltantes = set(columnas) - set(df.columns)
+    if faltantes:
+        raise ValueError(
+            f"productos.csv: faltan columnas {faltantes}. "
+            f"Columnas disponibles: {df.columns.tolist()}"
         )
 
-    return leer_csv(archivo, columnas)[columnas]
+    for columna in ("categoria_1", "categoria_2", "categoria_3"):
+        df[columna] = df[columna].fillna("").astype(str).str.strip()
+
+    # Completamos las categorías que falten con el mismo
+    # clasificador de scripts/populate-categories.py, pero acá no
+    # descartamos a los que no se puedan clasificar: los necesitamos
+    # cargados igual para que las foreign keys de precios cierren.
+    sin_categoria = (
+        (df["categoria_1"] == "") &
+        (df["categoria_2"] == "") &
+        (df["categoria_3"] == "")
+    )
+    inferidas = 0
+    for idx in df.index[sin_categoria]:
+        cat1, cat2, cat3 = clasificar(
+            df.at[idx, "nombre"], df.at[idx, "marca"]
+        )
+        if cat1 is not None:
+            df.at[idx, "categoria_1"] = cat1
+            df.at[idx, "categoria_2"] = cat2
+            df.at[idx, "categoria_3"] = cat3
+            inferidas += 1
+
+    print(
+        f"  Categorías completadas por palabras clave: {inferidas} "
+        f"de {sin_categoria.sum()} productos sin categoría."
+    )
+
+    return df[columnas]
 
 
 def cargar_sucursales():
