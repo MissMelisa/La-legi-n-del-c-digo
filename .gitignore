@@ -1,2 +1,8 @@
 .venv
 .env
+# original dataset
+dataset/*.csv
+
+# keep outputs
+!dataset/outputs/
+!dataset/outputs/*.csv
