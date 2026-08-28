@@ -57,4 +57,4 @@ Con la base ya cargada, podés correr cualquiera de los scripts de `sql/` (por e
 
 El diseño y la estructura de la base de datos se encuentran documentados en:
 
-[Diseño de la base de datos](docs/diseno_base_datos.md)
+[Diseño de la base de datos](sql/docs/diseño_base_datos.md)
