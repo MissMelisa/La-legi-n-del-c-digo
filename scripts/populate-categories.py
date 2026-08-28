@@ -24,6 +24,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 archivo_entrada = DATASET_DIR / "productos.csv"
 archivo_salida = OUTPUT_DIR / "productos_limpios.csv"
+archivo_completo = OUTPUT_DIR / "productos_categorizados.csv"
 
 
 # ==================================================
@@ -146,9 +147,23 @@ df_limpio = df[~sin_clasificar].copy()
 
 
 # ==================================================
-# GUARDAR PRODUCTOS LIMPIOS
+# GUARDAR PRODUCTOS
 # ==================================================
 
+# productos_categorizados.csv: todos los productos (72038), con
+# categoria_1/2/3 vacía en los que no se pudieron clasificar. Este
+# es el que usan load-to-mysql.py y fullscript.sql para cargar la
+# tabla `productos`, porque necesitamos que estén todos: si faltara
+# alguno, los precios de ese producto no iban a poder insertarse
+# (foreign key).
+df.to_csv(
+    archivo_completo,
+    index=False,
+    encoding="utf-8"
+)
+
+# productos_limpios.csv: solo los que quedaron con alguna categoría,
+# como catálogo "prolijo" para mirar/analizar.
 df_limpio.to_csv(
     archivo_salida,
     index=False,
@@ -190,5 +205,5 @@ print("\nColumnas finales:")
 print(df_limpio.columns.tolist())
 
 print(
-    f"\nArchivo generado:\n{archivo_salida}"
+    f"\nArchivos generados:\n{archivo_completo}\n{archivo_salida}"
 )
