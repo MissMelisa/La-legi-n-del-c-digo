@@ -26,14 +26,21 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 │   ├── update-columns.py
 │   ├── categorizador.py
 │   ├── populate-categories.py
-│   └── load-to-mysql.py
+│   ├── load-to-mysql.py
+│   ├── conexion.py
+│   ├── menu.py
+│   │
+│   └── producto/
+│       ├── producto.py
+│       └── productoCRUD.py
 ├── sql/
 │   ├── 00_crear_base_datos.sql
 │   ├── 01_promedio_por_comercio.sql
 │   ├── 02_maximo_por_categoria.sql
 │   ├── 03_minimo_por_producto.sql
 │   ├── 04_suma_por_comercio.sql
-│   └── 05_diferencia_por_producto.sql
+│   ├── 05_diferencia_por_producto.sql
+│   └── 06_vista_precios_detalle.sql
 ├── requirements.txt
 ├── .env.example
 └── README.md
@@ -52,6 +59,21 @@ La mayoría de los productos del dataset original no traen `categoria_1/2/3` car
 `scripts/populate-categories.py` corre el mismo clasificador de forma independiente y guarda el resultado (solo los productos que quedaron con alguna categoría) en `dataset/outputs/productos_limpios.csv`, con una columna extra `categoria_origen` (`original` / `inferida`) para poder distinguir qué categorías vienen del dataset y cuáles fueron inferidas.
 
 Con la base ya cargada, podés correr cualquiera de los scripts de `sql/` (por ejemplo `mysql -u root datos_comercios < sql/01_promedio_por_comercio.sql`).
+
+## Menú de consola (POO + CRUD + búsquedas + vista)
+
+Con la base ya cargada, se puede gestionar la tabla `productos` desde una consola interactiva:
+
+1. Creá la vista que integra `productos` + `precios` + `sucursales`: `mysql -u root datos_comercios < sql/06_vista_precios_detalle.sql`
+2. Corré `python scripts/menu.py`
+
+El menú permite:
+
+- **Alta, baja y modificación** de productos, conectadas a la base real (`scripts/producto.py`, clase `ProductoRepositorio`).
+- **Búsquedas** por nombre (coincidencia parcial) y por categoría (`categoria_1`).
+- **Vista** `vista_precios_detalle` (`sql/06_vista_precios_detalle.sql`), consultada desde Python para listar precio y sucursal de un producto.
+
+La conexión a MySQL (`scripts/conexion.py`, clase `ConexionBD`) y la entidad `Producto` (`scripts/producto.py`) están modeladas con clases (constructor, atributos y métodos), instanciadas desde `scripts/menu.py`.
 
 ## Documentación
 
