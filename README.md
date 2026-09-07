@@ -33,7 +33,8 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 │   ├── 02_maximo_por_categoria.sql
 │   ├── 03_minimo_por_producto.sql
 │   ├── 04_suma_por_comercio.sql
-│   └── 05_diferencia_por_producto.sql
+│   ├── 05_diferencia_por_producto.sql
+│   └── 06_vista_precios_detalle.sql
 ├── requirements.txt
 ├── .env.example
 └── README.md
