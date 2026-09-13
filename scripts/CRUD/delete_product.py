@@ -2,7 +2,7 @@ from conexion import ConexionBD
 
 #insertar llamada al menu()
 
-def delete_producto():
+def delete_product():
 
     try:
         bd = ConexionBD()

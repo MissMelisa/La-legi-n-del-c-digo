@@ -37,7 +37,7 @@ class ConexionBD:
                 database=self.database,
                 #necesito esto por que la base lo usa. 
                 charset="utf8mb4",
-                # necesarionpara que cada fila sea un dict
+                # necesario para que cada fila sea un dict
                 cursorclass=pymysql.cursors.DictCursor,
             )
         return self.conexion
