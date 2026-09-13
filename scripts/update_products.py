@@ -1,8 +1,6 @@
 from conexion import ConexionBD
 
-#insertar llamada al menu()
-
-def update_producto():
+def update_product():
 
     try:
         bd = ConexionBD()
@@ -25,8 +23,16 @@ def update_producto():
             print("2. Nombre")
             print("3. Presentación")
             print("4. Categoría")
+            print("0. Salir")
 
-            opcion_ingresada = int(input("Ingrese el número del dato que quiere actualizar: "))
+            try:
+                opcion_ingresada = int(input("Ingrese el número del dato que quiere actualizar: "))
+            except ValueError:
+                print("Opción inválida. Debe ingresar un número")
+                continue
+            
+            if opcion_ingresada == 0:
+                break
 
             if opcion_ingresada == 1:
                 campo_a_actualizar = 'marca'
@@ -43,8 +49,11 @@ def update_producto():
             elif opcion_ingresada == 4:
 
                 while True:
-                    numero_categoria = int(input('Ingrese el nivel de categoría que quiere actualizar (1/2/3): '))
-
+                    try:
+                        numero_categoria = int(input('Ingrese el nivel de categoría que quiere actualizar (1/2/3): '))
+                    except ValueError:
+                        print("Opción inválida. Debe ingresar un número")
+                        continue
                     if numero_categoria == 1:
                         campo_a_actualizar = 'categoria_1'
                         valor_actualizar = input('Ingrese la nueva categoria: ')
