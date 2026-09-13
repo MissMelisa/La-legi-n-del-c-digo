@@ -1,4 +1,4 @@
-from CRUD.delete_product import delete_producto
+from CRUD.delete_product import delete_product
 
 print("MENU INTERACTIVO DE LA APLICACION")
 print("==================================================")

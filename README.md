@@ -21,12 +21,29 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 
 ```text
 .
+├── dataset/
+│   ├── productos.csv
+│   ├── sucursales.csv
+│   ├── precios_20200412_20200413.csv
+│   ├── precios_20200419_20200419.csv
+│   ├── precios_20200426_20200426.csv
+│   ├── precios_20200502_20200503.csv
+│   ├── precios_20200518_20200518.csv
+│   └── outputs/
+│       ├── sucursales_cordoba.csv
+│       ├── precios_cordoba.csv
+│       ├── productos_limpios.csv
+│       └── productos_categorizados.csv
 ├── scripts/
 │   ├── clean-up.py
 │   ├── update-columns.py
 │   ├── categorizador.py
 │   ├── populate-categories.py
-│   └── load-to-mysql.py
+│   ├── load-to-mysql.py
+│   ├── conexion.py
+│   ├── menu.py
+│   └── CRUD/
+│       └── delete_product.py
 ├── sql/
 │   ├── 00_crear_base_datos.sql
 │   ├── 01_promedio_por_comercio.sql
@@ -34,11 +51,25 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 │   ├── 03_minimo_por_producto.sql
 │   ├── 04_suma_por_comercio.sql
 │   ├── 05_diferencia_por_producto.sql
-│   └── 06_vista_precios_detalle.sql
+│   ├── 06_vista_precios_detalle.sql
+│   ├── fullscript.sql
+│   └── docs/
+│       └── diseño_base_datos.md
+├── .github/
+│   └── pull_request_template.md
+├── docker-compose.yml
+├── load-data.sh
 ├── requirements.txt
 ├── .env.example
+├── .gitignore
 └── README.md
 ```
+
+- `dataset/` — CSV originales del dataset SEPA y, en `outputs/`, los archivos generados por los scripts de limpieza y categorización.
+- `scripts/` — pipeline de datos (`clean-up.py`, `update-columns.py`, `categorizador.py`, `populate-categories.py`, `load-to-mysql.py`), la conexión a MySQL (`conexion.py`) y la aplicación interactiva (`menu.py` + `CRUD/`).
+- `sql/` — script de creación de la base (`00_crear_base_datos.sql`), las consultas de análisis numeradas, `fullscript.sql` con todo junto y la documentación del diseño en `docs/`.
+- `docker-compose.yml` — levanta un MySQL 8.4 local para desarrollo.
+- `load-data.sh` — corre el pipeline completo: limpieza y carga a MySQL.
 
 ## Cargar los datos a MySQL
 
