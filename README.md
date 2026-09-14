@@ -42,8 +42,9 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 │   ├── load-to-mysql.py
 │   ├── conexion.py
 │   ├── menu.py
-│   └── CRUD/
-│       └── delete_product.py
+│   └── producto/
+│       ├── producto.py
+│       └── productoCRUD.py
 ├── sql/
 │   ├── 00_crear_base_datos.sql
 │   ├── 01_promedio_por_comercio.sql
@@ -66,7 +67,7 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 ```
 
 - `dataset/` — CSV originales del dataset SEPA y, en `outputs/`, los archivos generados por los scripts de limpieza y categorización.
-- `scripts/` — pipeline de datos (`clean-up.py`, `update-columns.py`, `categorizador.py`, `populate-categories.py`, `load-to-mysql.py`), la conexión a MySQL (`conexion.py`) y la aplicación interactiva (`menu.py` + `CRUD/`).
+- `scripts/` — pipeline de datos (`clean-up.py`, `update-columns.py`, `categorizador.py`, `populate-categories.py`, `load-to-mysql.py`), la conexión a MySQL (`conexion.py`) y la aplicación interactiva (`menu.py` + `producto/` con la clase `Producto` y el CRUD `ProductoCRUD`).
 - `sql/` — script de creación de la base (`00_crear_base_datos.sql`), las consultas de análisis numeradas, `fullscript.sql` con todo junto y la documentación del diseño en `docs/`.
 - `docker-compose.yml` — levanta un MySQL 8.4 local para desarrollo.
 - `load-data.sh` — corre el pipeline completo: limpieza y carga a MySQL.
@@ -84,6 +85,25 @@ La mayoría de los productos del dataset original no traen `categoria_1/2/3` car
 `scripts/populate-categories.py` corre el mismo clasificador de forma independiente y guarda el resultado (solo los productos que quedaron con alguna categoría) en `dataset/outputs/productos_limpios.csv`, con una columna extra `categoria_origen` (`original` / `inferida`) para poder distinguir qué categorías vienen del dataset y cuáles fueron inferidas.
 
 Con la base ya cargada, podés correr cualquiera de los scripts de `sql/` (por ejemplo `mysql -u root datos_comercios < sql/01_promedio_por_comercio.sql`).
+
+## Menú interactivo
+
+Con la base ya cargada, `scripts/menu.py` ofrece una aplicación de consola para gestionar productos sin escribir SQL a mano:
+
+```bash
+python scripts/menu.py
+```
+
+Opciones disponibles:
+
+1. Alta de producto (con carga opcional de precio en una sucursal).
+2. Baja de producto (elimina también sus precios asociados).
+3. Modificación de producto.
+4. Búsqueda de productos por nombre.
+5. Búsqueda de productos por categoría.
+6. Vista de precios por producto y sucursal (usa `vista_precios_detalle`, ver `sql/06_vista_precios_detalle.sql`).
+
+Toda la lógica de acceso a datos vive en `scripts/producto/`: la clase `Producto` (representa un registro de la tabla `productos`) y `ProductoCRUD` (altas, bajas, modificaciones, búsquedas y consultas contra MySQL usando `conexion.py`).
 
 ## Documentación
 
