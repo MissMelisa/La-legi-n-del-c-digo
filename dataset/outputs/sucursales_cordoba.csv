@@ -53,7 +53,7 @@ id,comercioid,banderaid,banderadescripcion,comerciorazonsocial,provincia,localid
 16-2-4104,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Santiago Derqui 33,-31.42571,-64.18749100000001,Mini Libertad Nueva Cordoba,Autoservicio
 16-2-4204,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Sagrada Familia 1305,-31.38671,-64.22750699999999,Mini Libertad Sagrada Familia,Autoservicio
 16-2-4604,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Av. Emilio Caraffa 2683,-31.387203000000003,-64.21509499999999,Mini Libertad Caraffa,Autoservicio
-16-2-4804,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Rodeau 581,-31.424348,-64.178865,Mini Libertad Rondeau ,Autoservicio
+16-2-4804,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Rodeau 581,-31.424348,-64.178865,Mini Libertad Rondeau,Autoservicio
 16-2-5204,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Tucumán 138,-31.41330300000001,-64.187476,Mini Libertad Tucuman,Autoservicio
 16-2-5404,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,Paraná 475,-31.423638,-64.17975,Mini Libertad Parana,Autoservicio
 16-2-5504,16,2,Mini Libertad,Libertad S.A,AR-X,Capital,José Roque Funes 1145,-31.380531,-64.24515,Petit Barranquitas Mall,Autoservicio
@@ -112,7 +112,7 @@ id,comercioid,banderaid,banderadescripcion,comerciorazonsocial,provincia,localid
 8-1-3,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Carlos Gimenez 35,-31.365896000000006,-64.16644000000001,Sucursal 3,Supermercado
 8-1-4,8,1,Mariano Max,Mariano S.A.,AR-X,jesus maria,Italia 363,-30.978745,-64.092456,Sucursal 4,Supermercado
 8-1-5,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Av. Santa Ana 3551,-31.412738,-64.23076800000001,Sucursal 5,Hipermercado
-8-1-6,8,1,Mariano Max,Mariano S.A.,AR-X,CRUZ DEL EJE,Av. Mitre  Esquina José Hernández 0,-30.724778000000004,-64.80168,Sucursal 6,Hipermercado
+8-1-6,8,1,Mariano Max,Mariano S.A.,AR-X,CRUZ DEL EJE,Av. Mitre Esquina José Hernández 0,-30.724778000000004,-64.80168,Sucursal 6,Hipermercado
 8-1-7,8,1,Mariano Max,Mariano S.A.,AR-X,CORDOBA,Av. Vélez Sársfield 4051,-31.457372,-64.200399,Sucursal 7,Hipermercado
 8-1-8,8,1,Mariano Max,Mariano S.A.,AR-X,Valle Hermoso,Ruta Nac Nº 38 Esquina Calle Las Sierras 0,-31.108277,-64.484196,Sucursal 8,Hipermercado
 8-1-9,8,1,Mariano Max,Mariano S.A.,AR-X,jesus maria,Ruta Nac. Nº 9 Esquina Calle Corrientes 0,-30.977255,-64.084407,Sucursal 9,Hipermercado

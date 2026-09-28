@@ -1,9 +1,23 @@
 from conexion import ConexionBD
 from producto import Producto
+from sucursal import Sucursal
+from precio import Precio
+
+
+def _dividir_truncado(filas, limite):
+    """Recorta a `limite` elementos y avisa si había más resultados.
+
+    Se usa pidiendo `limite + 1` filas a la base: si vuelven más de
+    `limite`, significa que hay más resultados de los que se muestran
+    (evita que un "Total: 50" se confunda con el total real).
+    """
+    truncado = len(filas) > limite
+    return filas[:limite], truncado
 
 
 class ProductoCRUD:
-    """Gestiona el acceso a la tabla productos."""
+    """Gestiona el acceso a la tabla productos (y, de forma acotada,
+    a sucursales y precios para las operaciones que los necesitan)."""
 
     def __init__(self, conexion: ConexionBD):
         self.conexion = conexion
@@ -65,21 +79,27 @@ class ProductoCRUD:
         return self.conexion.ejecutar_accion(sql, parametros)
 
     def eliminar(self, producto_id):
-        """Elimina primero los precios relacionados."""
+        """Elimina el producto y sus precios asociados en una única
+        transacción: si falla el DELETE de productos, se revierte
+        también el DELETE de precios (evita dejar precios huérfanos
+        eliminados sin haber borrado el producto)."""
 
-        self.conexion.ejecutar_accion(
-            "DELETE FROM precios WHERE producto_id = %s",
-            (producto_id,)
-        )
-
-        return self.conexion.ejecutar_accion(
-            "DELETE FROM productos WHERE id = %s",
-            (producto_id,)
-        )
+        return self.conexion.ejecutar_transaccion([
+            (
+                "DELETE FROM precios WHERE producto_id = %s",
+                (producto_id,),
+            ),
+            (
+                "DELETE FROM productos WHERE id = %s",
+                (producto_id,),
+            ),
+        ])
 
     # Búsquedas
 
     def buscar_por_nombre(self, texto, limite=50):
+        """Devuelve (productos, truncado). `truncado` es True si hay más
+        resultados de los que se devuelven (más de `limite`)."""
         sql = """
             SELECT *
             FROM productos
@@ -90,59 +110,72 @@ class ProductoCRUD:
 
         filas = self.conexion.ejecutar_consulta(
             sql,
-            (f"%{texto}%", limite)
+            (f"%{texto}%", limite + 1)
         )
+        filas, truncado = _dividir_truncado(filas, limite)
 
-        return [Producto.desde_fila(fila) for fila in filas]
+        return [Producto.desde_fila(fila) for fila in filas], truncado
 
     def buscar_por_categoria(self, categoria, limite=50):
+        """Busca en las tres columnas de categoría (categoria_1/2/3),
+        no solo en categoria_1. Devuelve (productos, truncado)."""
         sql = """
             SELECT *
             FROM productos
             WHERE categoria_1 = %s
+               OR categoria_2 = %s
+               OR categoria_3 = %s
             ORDER BY nombre
             LIMIT %s
         """
 
         filas = self.conexion.ejecutar_consulta(
             sql,
-            (categoria, limite)
+            (categoria, categoria, categoria, limite + 1)
         )
+        filas, truncado = _dividir_truncado(filas, limite)
 
-        return [Producto.desde_fila(fila) for fila in filas]
+        return [Producto.desde_fila(fila) for fila in filas], truncado
 
     def listar_categorias(self):
+        """Lista las categorías existentes combinando las tres columnas
+        (categoria_1, categoria_2, categoria_3), sin duplicados."""
         sql = """
-            SELECT DISTINCT categoria_1
-            FROM productos
-            WHERE categoria_1 IS NOT NULL
-              AND categoria_1 <> ''
-            ORDER BY categoria_1
+            SELECT categoria_1 AS categoria FROM productos
+            WHERE categoria_1 IS NOT NULL AND categoria_1 <> ''
+            UNION
+            SELECT categoria_2 AS categoria FROM productos
+            WHERE categoria_2 IS NOT NULL AND categoria_2 <> ''
+            UNION
+            SELECT categoria_3 AS categoria FROM productos
+            WHERE categoria_3 IS NOT NULL AND categoria_3 <> ''
+            ORDER BY categoria
         """
 
         filas = self.conexion.ejecutar_consulta(sql)
 
-        return [
-            fila["categoria_1"]
-            for fila in filas
-        ]
+        return [fila["categoria"] for fila in filas]
 
     # Sucursales
 
     def obtener_sucursal(self, sucursal_id):
         sql = """
-            SELECT id, bandera_descripcion, sucursal_nombre, localidad, provincia
+            SELECT id, comercio_id, bandera_id, bandera_descripcion,
+                   comercio_razon_social, provincia, localidad, direccion,
+                   lat, lng, sucursal_nombre, sucursal_tipo
             FROM sucursales
             WHERE id = %s
         """
 
         filas = self.conexion.ejecutar_consulta(sql, (sucursal_id,))
 
-        return filas[0] if filas else None
+        return Sucursal.desde_fila(filas[0]) if filas else None
 
     def buscar_sucursales(self, texto, limite=20):
         sql = """
-            SELECT id, bandera_descripcion, sucursal_nombre, localidad, provincia
+            SELECT id, comercio_id, bandera_id, bandera_descripcion,
+                   comercio_razon_social, provincia, localidad, direccion,
+                   lat, lng, sucursal_nombre, sucursal_tipo
             FROM sucursales
             WHERE bandera_descripcion LIKE %s
                OR sucursal_nombre LIKE %s
@@ -153,11 +186,18 @@ class ProductoCRUD:
 
         patron = f"%{texto}%"
 
-        return self.conexion.ejecutar_consulta(sql, (patron, patron, patron, limite))
+        filas = self.conexion.ejecutar_consulta(
+            sql, (patron, patron, patron, limite)
+        )
 
-    # Vista de precios
+        return [Sucursal.desde_fila(fila) for fila in filas]
+
+    # Precios
 
     def agregar_precio(self, producto_id, sucursal_id, precio):
+        return self.crear_precio(Precio(producto_id, sucursal_id, precio))
+
+    def crear_precio(self, precio: Precio):
         sql = """
             INSERT INTO precios (precio, producto_id, sucursal_id)
             VALUES (%s, %s, %s)
@@ -165,10 +205,13 @@ class ProductoCRUD:
 
         return self.conexion.ejecutar_accion(
             sql,
-            (precio, producto_id, sucursal_id)
+            (precio.precio, precio.producto_id, precio.sucursal_id)
         )
 
+    # Vista de precios
+
     def listar_vista_precios(self, producto_id=None, limite=50):
+        """Devuelve (filas, truncado) desde vista_precios_detalle."""
         if producto_id:
             sql = """
                 SELECT *
@@ -177,7 +220,7 @@ class ProductoCRUD:
                 LIMIT %s
             """
 
-            parametros = (producto_id, limite)
+            parametros = (producto_id, limite + 1)
 
         else:
             sql = """
@@ -186,9 +229,7 @@ class ProductoCRUD:
                 LIMIT %s
             """
 
-            parametros = (limite,)
+            parametros = (limite + 1,)
 
-        return self.conexion.ejecutar_consulta(
-            sql,
-            parametros
-        )
+        filas = self.conexion.ejecutar_consulta(sql, parametros)
+        return _dividir_truncado(filas, limite)

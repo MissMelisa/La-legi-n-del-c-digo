@@ -267,6 +267,21 @@ def cargar_precios(productos_ids=None, sucursales_ids=None):
             "o sucursales (foreign key)."
         )
 
+    # Red de seguridad: `precios` tiene PRIMARY KEY (producto_id,
+    # sucursal_id), así que no puede haber dos filas con el mismo par.
+    # clean-up.py ya deduplica al generar precios_cordoba.csv, pero si
+    # se corre este script sobre un CSV generado a mano o con una
+    # versión vieja del pipeline, esto evita que la carga falle a
+    # mitad de camino por una violación de la clave primaria.
+    antes_dedupe = len(df)
+    df = df.drop_duplicates(subset=["producto_id", "sucursal_id"], keep="last")
+    if len(df) < antes_dedupe:
+        print(
+            f"  Aviso: se descartaron {antes_dedupe - len(df)} filas "
+            "duplicadas de producto_id+sucursal_id antes de cargar "
+            "(precios tiene clave primaria compuesta)."
+        )
+
     return df
 
 

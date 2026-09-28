@@ -63,6 +63,26 @@ class ConexionBD:
         conexion.commit()
         return filas_afectadas
 
+    def ejecutar_transaccion(self, operaciones):
+        """Ejecuta varias acciones (INSERT/UPDATE/DELETE) como una única
+        transacción: si alguna falla, se hace rollback de todas.
+
+        `operaciones` es una lista de tuplas (sql, parametros).
+        Devuelve la suma de filas afectadas.
+        """
+        conexion = self.conectar()
+        try:
+            with conexion.cursor() as cursor:
+                total_afectadas = 0
+                for sql, parametros in operaciones:
+                    cursor.execute(sql, parametros or ())
+                    total_afectadas += cursor.rowcount
+            conexion.commit()
+            return total_afectadas
+        except Exception:
+            conexion.rollback()
+            raise
+
     def __enter__(self):
         self.conectar()
         return self

@@ -44,6 +44,8 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 │   ├── menu.py
 │   └── producto/
 │       ├── producto.py
+│       ├── sucursal.py
+│       ├── precio.py
 │       └── productoCRUD.py
 ├── sql/
 │   ├── 00_crear_base_datos.sql
@@ -67,7 +69,7 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 ```
 
 - `dataset/` — CSV originales del dataset SEPA y, en `outputs/`, los archivos generados por los scripts de limpieza y categorización.
-- `scripts/` — pipeline de datos (`clean-up.py`, `update-columns.py`, `categorizador.py`, `populate-categories.py`, `load-to-mysql.py`), la conexión a MySQL (`conexion.py`) y la aplicación interactiva (`menu.py` + `producto/` con la clase `Producto` y el CRUD `ProductoCRUD`).
+- `scripts/` — pipeline de datos (`clean-up.py`, `update-columns.py`, `categorizador.py`, `populate-categories.py`, `load-to-mysql.py`), la conexión a MySQL (`conexion.py`) y la aplicación interactiva (`menu.py` + `producto/` con las clases `Producto`, `Sucursal` y `Precio`, y el acceso a datos `ProductoCRUD`).
 - `sql/` — script de creación de la base (`00_crear_base_datos.sql`), las consultas de análisis numeradas, `fullscript.sql` con todo junto y la documentación del diseño en `docs/`.
 - `docker-compose.yml` — levanta un MySQL 8.4 local para desarrollo.
 - `load-data.sh` — corre el pipeline completo: limpieza y carga a MySQL.
@@ -79,6 +81,10 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 3. Corré `python scripts/load-to-mysql.py`
 
 El script crea la base de datos y las tablas (`sql/00_crear_base_datos.sql`), vacía las tablas existentes y carga `dataset/productos.csv` y los CSV de `dataset/outputs/` (`sucursales_cordoba.csv`, `precios_cordoba.csv`). Filas de precios que no tengan un producto o sucursal correspondiente se descartan y se informan por consola.
+
+`precios` tiene clave primaria compuesta `(producto_id, sucursal_id)`: un mismo producto vendido en la misma sucursal aparece en varios de los CSV semanales de `dataset/precios_*.csv`, así que `scripts/clean-up.py` deduplica quedándose con el precio del snapshot más reciente antes de generar `precios_cordoba.csv` (de 174.414 filas originales de Córdoba quedan 99.681 pares producto+sucursal únicos). También descarta filas con precio nulo, cero o negativo. `scripts/load-to-mysql.py` repite esta deduplicación como red de seguridad antes de insertar.
+
+`scripts/clean-up.py` además imprime un diagnóstico de calidad de datos (nulos, duplicados, tipos de datos, productos sin categoría, precios no numéricos) sobre `productos.csv`, `sucursales.csv` y los `precios_*.csv` crudos, antes de filtrar/limpiar.
 
 La mayoría de los productos del dataset original no traen `categoria_1/2/3` cargada. Antes de insertarlos, el loader completa las categorías faltantes con un clasificador por palabras clave (`scripts/categorizador.py`) que usa la taxonomía real de [SEPA / Precios Claros](https://www.preciosclaros.gob.ar/#!/productos-informados). Es un heurístico basado en el nombre y la marca del producto, no viene del dataset original, así que puede tener errores u omisiones — se puede seguir ajustando agregando palabras clave a `categorizador.py`.
 
@@ -96,14 +102,31 @@ python scripts/menu.py
 
 Opciones disponibles:
 
-1. Alta de producto (con carga opcional de precio en una sucursal).
-2. Baja de producto (elimina también sus precios asociados).
+1. Alta de producto (valida el formato del ID —código de barras o código interno— y que no exista; permite cargar opcionalmente un precio en una sucursal).
+2. Baja de producto (elimina el producto y sus precios asociados en una única transacción).
 3. Modificación de producto.
 4. Búsqueda de productos por nombre.
-5. Búsqueda de productos por categoría.
+5. Búsqueda de productos por categoría (busca en `categoria_1`, `categoria_2` y `categoria_3`).
 6. Vista de precios por producto y sucursal (usa `vista_precios_detalle`, ver `sql/06_vista_precios_detalle.sql`).
 
-Toda la lógica de acceso a datos vive en `scripts/producto/`: la clase `Producto` (representa un registro de la tabla `productos`) y `ProductoCRUD` (altas, bajas, modificaciones, búsquedas y consultas contra MySQL usando `conexion.py`).
+Cuando una búsqueda devuelve más resultados de los que se muestran, el menú lo aclara explícitamente ("hay más; refiná la búsqueda") en vez de imprimir un "Total: 50" que se pueda confundir con el total real.
+
+## Modelo de clases (POO)
+
+`scripts/producto/` contiene las clases del modelo, separadas por responsabilidad:
+
+**Entidades** (representan una fila de una tabla, sin acceder a la base de datos):
+
+- `Producto` — tabla `productos`.
+- `Sucursal` — tabla `sucursales`.
+- `Precio` — tabla `precios` (la asociativa entre productos y sucursales).
+
+**Infraestructura y acceso a datos** (no son entidades del modelo relacional):
+
+- `ConexionBD` (`scripts/conexion.py`) — administra la conexión a MySQL y expone `ejecutar_consulta()`, `ejecutar_accion()` y `ejecutar_transaccion()` (esta última ejecuta varias acciones como una única transacción, con rollback automático si alguna falla).
+- `ProductoCRUD` (`scripts/producto/productoCRUD.py`) — es la única clase que accede a la base de datos: CRUD de productos, búsquedas, alta de precios y consulta de sucursales/vista de precios. Las entidades no se importan entre sí ni acceden a `ConexionBD` directamente, evitando la dependencia circular Producto ⇄ ProductoCRUD.
+
+La baja de un producto (`ProductoCRUD.eliminar`) borra sus precios y el producto en una sola transacción: si el segundo `DELETE` fallara, el primero se revierte, evitando dejar precios huérfanos eliminados sin haber borrado el producto.
 
 ## Documentación
 

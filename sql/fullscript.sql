@@ -69,9 +69,11 @@ CREATE TABLE IF NOT EXISTS sucursales (
 -- =========================================================
 
 CREATE TABLE IF NOT EXISTS precios (
-    precio DECIMAL(12,2),
-    producto_id VARCHAR(50),
-    sucursal_id VARCHAR(50),
+    precio DECIMAL(12,2) NOT NULL,
+    producto_id VARCHAR(50) NOT NULL,
+    sucursal_id VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (producto_id, sucursal_id),
 
     INDEX idx_precios_producto (producto_id),
     INDEX idx_precios_sucursal (sucursal_id),

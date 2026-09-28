@@ -1,10 +1,10 @@
 """
-Clase Producto (POO) + ProductoRepositorio con las operaciones
-CRUD, búsquedas y la consulta a la vista de precios, todo contra
-la base de datos real (datos_comercios).
-"""
+Clase Producto (POO): representa un registro de la tabla `productos`.
 
-from conexion import ConexionBD
+Esta clase es solo una entidad de datos (no accede a la base de datos:
+eso es responsabilidad exclusiva de ProductoCRUD, para evitar la
+dependencia circular Producto <-> ProductoCRUD).
+"""
 
 
 class Producto:
@@ -41,17 +41,5 @@ class Producto:
             categoria_2=fila.get("categoria_2") or "",
             categoria_3=fila.get("categoria_3") or "",
         )
-
-    def actualizar(self, conexion):
-        """Guarda en la base de datos los valores actuales de este producto."""
-        from productoCRUD import ProductoCRUD
-
-        return ProductoCRUD(conexion).actualizar(self)
-
-    def eliminar(self, conexion):
-        """Elimina este producto (y sus precios asociados) de la base de datos."""
-        from productoCRUD import ProductoCRUD
-
-        return ProductoCRUD(conexion).eliminar(self.id)
 
 

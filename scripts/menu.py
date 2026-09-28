@@ -6,6 +6,7 @@ How to use it:
     python scripts/menu.py
 """
 
+import re
 import sys
 from pathlib import Path
 
@@ -14,6 +15,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent / "producto"))
 from conexion import ConexionBD
 from producto import Producto
 from productoCRUD import ProductoCRUD
+
+# Códigos de producto del dataset: o bien un código de barras (EAN/UPC,
+# 8 a 14 dígitos), o bien un código interno "comercio-bandera-numero"
+# (ej: "36-3-020003110000") para productos sin código de barras propio.
+ID_PRODUCTO_PATRON = re.compile(r"^(\d{8,14}|\d{1,6}-\d{1,6}-\d{4,20})$")
 
 
 def pedir_texto(mensaje, permitir_vacio=True):
@@ -93,22 +99,42 @@ def elegir_sucursal(repo):
 
         for i, sucursal in enumerate(sucursales, start=1):
             print(
-                f"{i}. {sucursal['bandera_descripcion']} - {sucursal['sucursal_nombre']} "
-                f"| {sucursal['localidad']} ({sucursal['id']})"
+                f"{i}. {sucursal.bandera_descripcion} - {sucursal.sucursal_nombre} "
+                f"| {sucursal.localidad} ({sucursal.id})"
             )
 
         opcion = pedir_texto("Elegí una sucursal (número, Enter para buscar de nuevo): ")
         if opcion.isdigit() and 1 <= int(opcion) <= len(sucursales):
-            return sucursales[int(opcion) - 1]["id"]
+            return sucursales[int(opcion) - 1].id
+
+
+def pedir_id_producto(repo):
+    """Pide el ID del producto validando su formato (código de barras o
+    código interno comercio-bandera-numero) y que no exista todavía."""
+    while True:
+        producto_id = pedir_texto(
+            "ID del producto (código de barras, solo dígitos): ",
+            permitir_vacio=False,
+        )
+
+        if not ID_PRODUCTO_PATRON.match(producto_id):
+            print(
+                "ID inválido: debe ser un código de barras de 8 a 14 "
+                "dígitos (ej: 7791234567890) o un código interno con "
+                "el formato N-N-numero (ej: 36-3-020003110000)."
+            )
+            continue
+
+        if repo.obtener_por_id(producto_id):
+            print(f"Ya existe un producto con id '{producto_id}'.")
+            continue
+
+        return producto_id
 
 
 def alta_producto(repo):
     print("\n--- Alta de producto ---")
-    producto_id = pedir_texto("ID del producto: ", permitir_vacio=False)
-
-    if repo.obtener_por_id(producto_id):
-        print(f"Ya existe un producto con id '{producto_id}'.")
-        return
+    producto_id = pedir_id_producto(repo)
 
     marca = pedir_texto("Marca: ")
     nombre = pedir_texto("Nombre: ")
@@ -190,7 +216,7 @@ def modificar_producto(repo):
 # Búsquedas
 # ==================================================
 
-def mostrar_productos(productos, incluir_id=True):
+def mostrar_productos(productos, incluir_id=True, truncado=False):
     if not productos:
         print("No se encontraron productos.")
         return
@@ -207,13 +233,20 @@ def mostrar_productos(productos, incluir_id=True):
                 f"{producto.nombre} ({producto.marca}) - {producto.presentacion}"
                 + (f" | {categorias}" if categorias else "")
             )
-    print(f"Total: {len(productos)}")
+    if truncado:
+        print(
+            f"Mostrando los primeros {len(productos)} resultados "
+            "(hay más; refiná la búsqueda para verlos todos)."
+        )
+    else:
+        print(f"Total: {len(productos)}")
 
 
 def buscar_por_nombre(repo):
     print("\n--- Búsqueda por nombre ---")
     texto = pedir_texto("Texto a buscar en el nombre: ", permitir_vacio=False)
-    mostrar_productos(repo.buscar_por_nombre(texto), incluir_id=False)
+    productos, truncado = repo.buscar_por_nombre(texto)
+    mostrar_productos(productos, incluir_id=False, truncado=truncado)
 
 
 def buscar_por_categoria(repo):
@@ -233,7 +266,8 @@ def buscar_por_categoria(repo):
         return
 
     categoria = categorias[int(opcion) - 1]
-    mostrar_productos(repo.buscar_por_categoria(categoria))
+    productos, truncado = repo.buscar_por_categoria(categoria)
+    mostrar_productos(productos, truncado=truncado)
 
 
 # ==================================================
@@ -246,7 +280,7 @@ def ver_vista_precios(repo):
 
     producto_id = None
     if texto:
-        productos = repo.buscar_por_nombre(texto)
+        productos, _ = repo.buscar_por_nombre(texto)
         if not productos:
             print("No se encontraron productos con ese nombre.")
             return
@@ -264,7 +298,7 @@ def ver_vista_precios(repo):
 
             producto_id = productos[int(opcion) - 1].id
 
-    filas = repo.listar_vista_precios(producto_id)
+    filas, truncado = repo.listar_vista_precios(producto_id)
     if not filas:
         if producto_id:
             print("Ese producto no tiene precios cargados.")
@@ -279,7 +313,13 @@ def ver_vista_precios(repo):
             f"${fila['precio']} en {fila['sucursal_nombre']} "
             f"({fila['localidad']}, {fila['provincia']})"
         )
-    print(f"Total: {len(filas)}")
+    if truncado:
+        print(
+            f"Mostrando los primeros {len(filas)} resultados (hay más; "
+            "indicá un producto puntual para ver todos sus precios)."
+        )
+    else:
+        print(f"Total: {len(filas)}")
 
 
 # ==================================================
