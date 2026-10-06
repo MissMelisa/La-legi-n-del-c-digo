@@ -42,6 +42,7 @@ Los datos son procesados, limpiados y almacenados en una base de datos MySQL par
 │   ├── load-to-mysql.py
 │   ├── conexion.py
 │   ├── menu.py
+│   ├── analisis-pandas-numpy.py
 │   └── producto/
 │       ├── producto.py
 │       ├── sucursal.py
@@ -110,6 +111,17 @@ Opciones disponibles:
 6. Vista de precios por producto y sucursal (usa `vista_precios_detalle`, ver `sql/06_vista_precios_detalle.sql`).
 
 Cuando una búsqueda devuelve más resultados de los que se muestran, el menú lo aclara explícitamente ("hay más; refiná la búsqueda") en vez de imprimir un "Total: 50" que se pueda confundir con el total real.
+
+## Análisis con Pandas y NumPy
+
+Con la base ya cargada, `scripts/analisis-pandas-numpy.py` carga los precios desde MySQL a un DataFrame de Pandas y responde las 5 preguntas de análisis de negocio:
+
+```bash
+python scripts/analisis-pandas-numpy.py            # imprime resultados y genera gráficos
+python scripts/analisis-pandas-numpy.py --sin-graficos
+```
+
+Incluye estadísticas descriptivas (`describe()`), filtros y agrupamientos (`groupby`), operaciones con NumPy (percentiles, atípicos por IQR, índice de precio relativo por producto) y guarda los gráficos en `dataset/outputs/graficos/`.
 
 ## Modelo de clases (POO)
 
